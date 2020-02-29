@@ -1,17 +1,34 @@
 <template>
+
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <meta charset="utf-8">
+    <h1>Lyrics retriever</h1>
+    <input v-model="artist">
+    <input v-model="title">
+    <button @click="getLyrics">Get Lyrics</button>
+    {{ lyrics }}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
+  data() {
+    return {
+      lyrics: []
+    }
+  },
   components: {
-    HelloWorld
+
+  },
+  methods: {
+    getLyrics: function(artist, title) {
+    fetch(`https://api.lyrics.ovh/v1/${this.artist}/${this.title}`)
+    .then(res => res.json())
+    .then(lyrics => this.lyrics = lyrics)
+    }
   }
 }
 </script>
