@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    
     <p>{{currentLyrics}}
     </p>
     <button @click="saveLyrics">Save Lyrics</button>
