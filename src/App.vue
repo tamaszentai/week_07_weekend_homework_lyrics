@@ -15,10 +15,13 @@
         <button @click="getlyrics">Get Lyrics</button>
       </li>
     </ul>
-    <div>
-      <p v-if="getlyrics">{{this.artist}}-{{this.title}}</p>
+    <div v-if="this.lyrics">
+      <p>{{this.artist}}-{{this.title}}</p>
       <lyrics-box :lyrics="lyrics"></lyrics-box>
     </div>
+    <!-- <div v-if="this.lyrics.error">
+      <p>{{this.lyrics.error}}</p>
+    </div> -->
   </div>
 
 </template>
@@ -33,7 +36,7 @@ export default {
   name: 'App',
   data() {
     return {
-      lyrics: [],
+      lyrics: null,
       savedLyrics: []
     }
   },
